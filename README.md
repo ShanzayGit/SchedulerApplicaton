@@ -11,16 +11,16 @@ A modular console-based task scheduler built using C++. This project demonstrate
 ## Project Structure
 - src/ → implementation files
 - include/ → header files
-- 
+  
 ## Architecture
 - Scheduler: manages task operations
 - Task: represents a single task
 - Date/Time: utility classes
-- 
+  
 ## Technologies
 - C++
 - OOP
-- 
+  
 ## How to Run
 ### Using g++
 g++ src/*.cpp app/main.cpp -I include -o scheduler
