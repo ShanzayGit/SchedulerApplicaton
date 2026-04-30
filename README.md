@@ -1,18 +1,16 @@
 ## SchedulerApplication
 
 ## Overview
-
 SchedulerApplication is a C++ project that manages tasks by date and time. It allows users to add, update, and display tasks, supporting features such as viewing today's tasks, in-progress tasks, and completed tasks. The project demonstrates object-oriented design with classes for Scheduler, Task, Date, Time, and a custom MyString implementation.
 
 ## Folder Structure
+- **include/** → Header files (Date.h, Time.h, Task.h, Scheduler.h, MyString.h)
+- **src/** → Source files (.cpp implementations)
+- **app/** → Entry point (main.cpp)
+- **SchedulerApplication.sln** → Visual Studio solution
+- **SchedulerApplication.vcxproj** → Visual Studio project file
+- **README.md** → Project documentation
 
-SchedulerApplication/
-├── include/        # Header files (Date.h, Time.h, Task.h, Scheduler.h, MyString.h)\n
-├── src/            # Source files (.cpp implementations)
-├── app/            # Entry point (main.cpp)
-├── SchedulerApplication.sln  # Visual Studio solution
-├── SchedulerApplication.vcxproj # Visual Studio project file
-└── README.md       # Project documentation
 
 ### Build Instructions
 
