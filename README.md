@@ -1,10 +1,10 @@
 ## SchedulerApplication
 
 ## Overview
-SchedulerApplication is a C++ project that manages tasks by date and time. It allows users to add, update, and display tasks, supporting features such as viewing today's tasks, in-progress tasks, and completed tasks. The project demonstrates object-oriented design with classes for Scheduler, Task, Date, Time, and a custom MyString implementation.
+SchedulerApplication is a C++ project that manages tasks by date and time. It allows users to add, update, and display tasks, supporting features such as viewing today's tasks, in-progress tasks, and completed tasks. The project demonstrates object-oriented design with classes for Scheduler, Task, Date, MyTime, and a custom MyString implementation.
 
 ## Folder Structure
-- **include/** → Header files (Date.h, Time.h, Task.h, Scheduler.h, MyString.h)
+- **include/** → Header files (Date.h, MyTime.h, Task.h, Scheduler.h, MyString.h)
 - **src/** → Source files (.cpp implementations)
 - **app/** → Entry point (main.cpp)
 - **SchedulerApplication.sln** → Visual Studio solution
@@ -25,9 +25,9 @@ g++ src/*.cpp app/main.cpp -I include -o scheduler
 
 ## Usage
 - After building, run the executable to start the application. Example usage:
-- Add tasks with specific dates and times.
+- Add tasks with specific dates, times and status(Todo/InProgress/Done).
 - Display today's tasks.
-- View tasks marked as Todo,InProgress or Done.
+- View tasks marked as Todo, InProgress or Done.
 
 ## Sample Output
 Today's Tasks:
@@ -41,7 +41,7 @@ Today's Tasks:
 
 ## Features
 - Task management by date and time.
-- Update task status, date, and time.
+- Update task message, status, date, and time.
 - Display tasks filtered by status.
 - Custom string class implementation (MyString).
 
