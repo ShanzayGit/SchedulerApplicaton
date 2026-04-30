@@ -13,10 +13,10 @@ class Date
 public:
 	Date();
 	Date(int, int, int);
-	void setDate(int, int, int);
-	void setDay(int);
-	void setMonth(int);
-	void setYear(int);
+	bool setDate(int, int, int);
+	bool setDay(int);
+	bool setMonth(int);
+	bool setYear(int);
 	int getMonth()const;
 	int getDay()const;
 	int getYear()const;

@@ -46,20 +46,19 @@ void Schedular::addTask(const Task& t)
 	}
 	noOfTasks++;
 }
-void Schedular::updateTaskTime(const Time& t, const Time& newT)
+void Schedular::updateTaskTime(const Date& d,const String& s, const Time& newT)
 {
-	int h = t.getHour();
-	int m = t.getMinute();
-	int s = t.getSecond();
+	int month = d.getMonth();
+	int year = d.getYear();
+	int day = d.getDay();
 	int i = 0;
 	bool isTaskAvail = false;
-
 	while (i < noOfTasks)
 	{
-		int hSrc = taskList[i].getTime().getHour();
-		int mSrc = taskList[i].getTime().getMinute();
-		int sSrc = taskList[i].getTime().getSecond();
-		if (mSrc == m && hSrc == h && sSrc == s)
+		int monthSrc = taskList[i].getDate().getMonth();
+		int daySrc = taskList[i].getDate().getDay();
+		int yearSrc = taskList[i].getDate().getYear();
+		if (taskList[i].getMsg()==s && (monthSrc == month && daySrc == day && yearSrc == year))
 		{
 			taskList[i].updateTime(newT);
 			isTaskAvail = true;
@@ -69,7 +68,7 @@ void Schedular::updateTaskTime(const Time& t, const Time& newT)
 	if (!isTaskAvail)
 		cout << "No Time Matches the Search!!";
 }
-void Schedular::updateTaskDate(const Date& d, const Date& newD)
+void Schedular::updateTaskDate(const String& m,const Date& d, const Date& newD)
 {
 	int month = d.getMonth();
 	int year = d.getYear();
@@ -82,7 +81,7 @@ void Schedular::updateTaskDate(const Date& d, const Date& newD)
 		int monthSrc = taskList[i].getDate().getMonth();
 		int daySrc = taskList[i].getDate().getDay();
 		int yearSrc = taskList[i].getDate().getYear();
-		if (monthSrc == month && daySrc == day && yearSrc == year)
+		if ((monthSrc == month && daySrc == day && yearSrc == year)&&(taskList[i].getMsg()==m))
 		{
 			taskList[i].updateDate(newD);
 			isTaskAvail = true;
@@ -93,14 +92,19 @@ void Schedular::updateTaskDate(const Date& d, const Date& newD)
 	if (!isTaskAvail)
 		cout << "No Date matches the Search!!";
 }
-void Schedular::updateTaskMsg(const String& m, const String& newM)
+void Schedular::updateTaskMsg(const Date& d,const String& m, const String& newM)
 {
 	int i = 0;
 	bool isTaskAvail = false;
-
+	int month = d.getMonth();
+	int year = d.getYear();
+	int day = d.getDay();
 	while (i < noOfTasks)
 	{
-		if (taskList[i].getMsg() == m)
+		int monthSrc = taskList[i].getDate().getMonth();
+		int daySrc = taskList[i].getDate().getDay();
+		int yearSrc = taskList[i].getDate().getYear();
+		if ((monthSrc == month && daySrc == day && yearSrc == year) && (taskList[i].getMsg() == m))
 		{
 			taskList[i].updateMessage(newM);
 			isTaskAvail = true;
@@ -111,15 +115,21 @@ void Schedular::updateTaskMsg(const String& m, const String& newM)
 	if (!isTaskAvail)
 		cout << " No Task Matches the Search!!";
 }
-void Schedular::updateTaskStatus(const String& m, const String& s)
+void Schedular::updateTaskStatus(const Date& d,const String& m, const String& s)
 {
 
 	int i = 0;
 	bool isTaskAvail = false;
 
+	int month = d.getMonth();
+	int year = d.getYear();
+	int day = d.getDay();
 	while (i < noOfTasks)
 	{
-		if (taskList[i].getMsg() == m)
+		int monthSrc = taskList[i].getDate().getMonth();
+		int daySrc = taskList[i].getDate().getDay();
+		int yearSrc = taskList[i].getDate().getYear();
+		if ((monthSrc == month && daySrc == day && yearSrc == year) && (taskList[i].getMsg() == m))
 		{
 			taskList[i].updateStatus(s);
 			isTaskAvail = true;

@@ -22,15 +22,29 @@ void SchedularApp::startApp()
 			Date d;
 			Time t;
 			Task task;
-			int month, day, year;
-			cout << "\nEnter date (MM:DD:YYYY)  : ";
-			cin >> month >> day >> year;
-			d.setDate(month, day, year);
+			int month, day, year; bool vd = 1,ts=1;
+			while (vd)
+			{
+				cout << "\nEnter date you want to update (MM:DD:YY)";
+				cin >> month >> day >> year;
+				if (d.setDate(month, day, year))
+					vd = 0;
+				else
+					cout << "\nInvalid date month , year or day!! Try Again !!";
+			}
 			int hour, sec, min;
-			cout << "\nEnter time (HOUR:MIN:SEC) : ";
-			cin >> hour >> min >> sec;
+			while(ts)
+			{
+				cout << "\nEnter time (HOUR:MIN:SEC) : ";
+				cin >> hour >> min >> sec;
+				if(t.setTime(hour, min, sec))
+					ts = 0;
+				else
+				{
+					cout << "\nInvalid Time !! Enter again!!";
+				}
+			} 
 			cin.ignore();
-			t.setTime(hour, min, sec);
 			String msg, st;
 			cout << "\nEnter your task message : ";
 			cin >> msg;
@@ -41,46 +55,110 @@ void SchedularApp::startApp()
 		}
 		else if (choice == 2)
 		{
-			Time oldTime, newTime;
-			int oldH, newH, oldM, newM, oldS, newS;
-			cout << "\nEnter time you want to update:(HOUR:MIN:SEC)";
-			cin >> oldH >> oldM >> oldS;
-			oldTime.setTime(oldH, oldM, oldS);
-			cout << "\nEnter new time :(HOUR:MIN:SEC)";
-			cin >> newH >> newM >> newS;
-			newTime.setTime(newH, newM, newS);
-			s.updateTaskTime(oldTime, newTime);
+			Date oldDate;
+			Time newTime;
+			int oldM, oldY, oldD;
+			bool vd = 1,ts=1;
+			while (vd)
+			{
+				cout << "\nEnter date of task you want to update (MM:DD:YY)";
+				cin >> oldM >> oldD >> oldY;
+				if (oldDate.setDate(oldM, oldD, oldY))
+					vd = 0;
+				else
+					cout << "Invalid date month , year or day!! Try Again !!";
+			}
+			cin.ignore();
+			String msg;
+			cout << "Enter task for which you want to change Time : ";
+			cin >> msg;
+			int  newH, newM, newS;	
+			while (ts)
+			{
+				cout << "\nEnter time (HOUR:MIN:SEC) : ";
+				cin >> newH >> newM >> newS;
+				if (newTime.setTime(newH, newM,newS))
+					ts = 0;
+				else
+				{
+					cout << "\nInvalid Time !! Enter again!!";
+				}
+			}
+			s.updateTaskTime(oldDate ,msg, newTime);
 		}
 		else if (choice == 3)
 		{
+			String msg;
+			cout << "Enter task for which you want to change Time : ";
+			cin.ignore();
+			cin >> msg;
 			Date oldDate, newDate;
 			int oldM, oldY, oldD, newM, newD, newY;
-			cout << "\nEnter date you want to update (MM:DD:YY)";
-			cin >> oldM >> oldD >> oldY;
-			oldDate.setDate(oldM, oldD, oldY);
-			cout << "\nEnter new date (MM:DD:YY)";
-			cin >> newM >> newD >> newY;
-			newDate.setDate(newM, newD, newY);
-			s.updateTaskDate(oldDate, newDate);
+			bool vd = 1;
+			while (vd)
+			{
+				cout << "\nEnter date you want to update (MM:DD:YY)";
+				cin >> oldM >> oldD >> oldY;
+				if (oldDate.setDate(oldM, oldD, oldY))
+					vd = 0;
+				else
+					cout << "Invalid date month , year or day!! Try Again !!";
+			}
+			bool vnd = 1;
+			while (vnd)
+			{
+				cout << "\nEnter new date (MM:DD:YY)";
+				cin >> newM >> newD >> newY;
+				if (oldDate.setDate(newM, newD, newY))
+					vnd = 0;
+				else
+					cout << "Invalid date month , year or day!! Try Again !!";
+			}			
+			s.updateTaskDate(msg,oldDate, newDate);
 		}
 		else if (choice == 4)
 		{
+			Date oldDate;
+			int oldM, oldY, oldD;
+			bool vd = 1;
+			while (vd)
+			{
+				cout << "\nEnter date you want to update (MM:DD:YY)";
+				cin >> oldM >> oldD >> oldY;
+				if (oldDate.setDate(oldM, oldD, oldY))
+					vd = 0;
+				else
+					cout << "Invalid date month , year or day!! Try Again !!";
+			}
 			String oldMsg, newMsg;
 			cout << "\nEnter task message you want to update :";
 			cin.ignore();
 			cin >> oldMsg;
 			cout << "\nEnter new task message  :";
 			cin >> newMsg;
-			s.updateTaskMsg(oldMsg, newMsg);
+			s.updateTaskMsg(oldDate,oldMsg, newMsg);
 		}
 		else if (choice == 5)
 		{
+
+			Date oldDate;
+			int oldM, oldY, oldD; 
+			bool vd = 1;
+			while (vd)
+			{
+				cout << "\nEnter date you want to update (MM:DD:YY)";
+				cin >> oldM >> oldD >> oldY;
+				if (oldDate.setDate(oldM, oldD, oldY))
+					vd = 0;
+				else
+					cout << "Invalid date month , year or day!! Try Again !!";
+			}
 			String msg, status;
 			cout << "\nEnter Task whose Status you Want to Update : ";
 			cin >> msg;
 			cout << "\nEnter Status : ";
 			cin >> status;
-			s.updateTaskStatus(msg, status);
+			s.updateTaskStatus(oldDate,msg, status);
 		}
 		else if (choice == 6)
 		{
@@ -101,10 +179,16 @@ void SchedularApp::startApp()
 		else if (choice == 10)
 		{
 			Date date;
-			int m, d, y;
-			cout << "\nEnter date to display task:(MM:DD:YY)";
-			cin >> m >> d >> y;
-			date.setDate(m, d, y);
+			int m, d, y; bool vd = 1;
+			while (vd)
+			{
+				cout << "\nEnter date you want to update (MM:DD:YY)";
+				cin >> m >>d >> y;
+				if (date.setDate(m, d, y))
+					vd = 0;
+				else
+					cout << "Invalid date month , year or day!! Try Again !!";
+			}
 			s.displayTask(date);
 		}
 		else if (choice == 11)

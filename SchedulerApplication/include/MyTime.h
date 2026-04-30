@@ -15,7 +15,7 @@ public:
 	int getHour()const;
 	int getSecond()const;
 	int getMinute()const;
-	void setTime(int h, int m, int s);
+	bool setTime(int h, int m, int s);
 	void incSec(int increament = 1);
 	void incMin(int increament = 1);
 	void incHour(int increament = 1);

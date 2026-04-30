@@ -23,27 +23,30 @@ Date::Date(int m, int d, int y) :Date()
 {
     setDate(m, d, y);
 }
-void Date::setDate(int m, int d, int y)
+bool Date::setDate(int m, int d, int y)
 {
-    setYear(y);
-    setMonth(m);
-    setDay(d);
+    if (setYear(y) &&setMonth(m) && setDay(d))
+        return 1;
+    else
+        return 0;
 }
-void Date::setDay(int d)
+bool Date::setDay(int d)
 {
+    if (day <= 0 || day > 31)
+        return 0;
     if (month == 4 || month == 6 || month == 9 || month == 11)
     {
         if (d > 0 && d <= 30)
             day = d;
         else
-            exit(0);
+            return 0;
     }
     else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
     {
         if (d > 0 && d <= 31)
             day = d;
         else
-            exit(0);
+            return 0;
     }
     else
     {
@@ -52,26 +55,33 @@ void Date::setDay(int d)
             if (d > 0 && d <= 29)
                 day = d;
             else
-                exit(0);
+                return 0;
         }
         else
         {
             if (d > 0 && d <= 28)
                 day = d;
             else
-                exit(0);
+                return 0;
         }
     }
+    return 1;
 }
-void Date::setMonth(int m)
+bool Date::setMonth(int m)
 {
     if (m > 0 && m <= 12)
         month = m;
+    else
+        return 0;
+    return 1;
 }
-void Date::setYear(int y)
+bool Date::setYear(int y)
 {
     if (y >= 1500 && y <= 3000)
         year = y;
+    else
+        return 0;
+    return 1;
 }
 int Date::getMonth()const
 {

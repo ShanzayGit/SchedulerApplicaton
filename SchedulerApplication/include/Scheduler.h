@@ -14,10 +14,10 @@ class Schedular
 public:
 	Schedular();
 	Schedular(int);
-	void updateTaskTime(const Time& t, const Time& newT);
-	void updateTaskDate(const Date& d, const Date& newD);
-	void updateTaskMsg(const String& m, const String& newM);
-	void updateTaskStatus(const String& m, const String& s);
+	void updateTaskTime(const Date& d, const String& s, const Time& newT);
+	void updateTaskDate(const String& s, const Date& oldD,const Date& newD);
+	void updateTaskMsg(const Date& d,const String& m, const String& newM);
+	void updateTaskStatus(const Date &d ,const String& m, const String& s);
 	static Date getCurrentDate();
 	void addTask(const Task&);
 	void displayTask(const Date& d = systemDate)const;

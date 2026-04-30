@@ -54,14 +54,16 @@ int Time::getMinute()const
 {
 	return minutes;
 }
-void Time::setTime(int h, int m, int s)
+bool Time::setTime(int h, int m, int s)
 {
 	if (isValidTime(h, m, s))
 	{
 		hours = h;
 		minutes = m;
 		seconds = s;
+		return 1;
 	}
+	return 0;
 }
 void Time::incSec(int increament)
 {
