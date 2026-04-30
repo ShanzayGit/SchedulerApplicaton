@@ -9,17 +9,26 @@ A modular console-based task scheduler built using C++. This project demonstrate
 - Update tasks
 
 ## Project Structure
-- source/ → implementation files
+- src/ → implementation files
 - include/ → header files
-
+- 
+## Architecture
+- Scheduler: manages task operations
+- Task: represents a single task
+- Date/Time: utility classes
+- 
 ## Technologies
 - C++
 - OOP
-
+- 
 ## How to Run
-g++ source/*.cpp -I include -o scheduler
-./scheduler   # or scheduler.exe on Windows
+### Using g++
+g++ src/*.cpp app/main.cpp -I include -o scheduler
 
+### Using Visual Studio
+1. Open .sln file
+2. Build solution
+3. Run project
 
 ## Future Improvements
 - File handling
