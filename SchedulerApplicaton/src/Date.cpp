@@ -1,6 +1,6 @@
 
 #include<iostream>
-#include "String.h"
+#include "MyString.h"
 #include"Date.h"
 #include<iomanip>
 using namespace std;

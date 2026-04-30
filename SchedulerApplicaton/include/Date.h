@@ -1,4 +1,4 @@
-#include "String.h"
+#include "MyString.h"
 #ifndef DATE_H
 #define DATE_H
 class Date

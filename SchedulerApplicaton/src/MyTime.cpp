@@ -1,5 +1,5 @@
 #include<iostream>
-#include"Time.h"
+#include"MyTime.h"
 using namespace std;
 Time::Time()
 {

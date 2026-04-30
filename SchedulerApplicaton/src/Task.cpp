@@ -1,5 +1,5 @@
-#include"Time.h"
-#include"String.h"
+#include"MyTime.h"
+#include "MyString.h"
 #include"Date.h"
 #include"Task.h"
 #include<iostream>

@@ -1,5 +1,5 @@
 #include<iostream>
-#include"String.h"
+#include"MyString.h"
 using namespace std;
 String& String::operator=(String&& s)
 {

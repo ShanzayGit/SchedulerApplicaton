@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include"Time.h"
-#include"String.h"
+#include"MyTime.h"
+#include"MyString.h"
 #include"Date.h"
 #include"Task.h"
 #include"Scheduler.h"
