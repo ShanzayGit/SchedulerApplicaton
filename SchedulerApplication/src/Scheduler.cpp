@@ -52,6 +52,8 @@ void Schedular::updateTaskTime(const Time& t, const Time& newT)
 	int m = t.getMinute();
 	int s = t.getSecond();
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		int hSrc = taskList[i].getTime().getHour();
@@ -60,10 +62,11 @@ void Schedular::updateTaskTime(const Time& t, const Time& newT)
 		if (mSrc == m && hSrc == h && sSrc == s)
 		{
 			taskList[i].updateTime(newT);
+			isTaskAvail = true;
 		}
 		i++;
 	}
-	if (i == noOfTasks)
+	if (!isTaskAvail)
 		cout << "No Time Matches the Search!!";
 }
 void Schedular::updateTaskDate(const Date& d, const Date& newD)
@@ -72,6 +75,8 @@ void Schedular::updateTaskDate(const Date& d, const Date& newD)
 	int year = d.getYear();
 	int day = d.getDay();
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		int monthSrc = taskList[i].getDate().getMonth();
@@ -80,35 +85,49 @@ void Schedular::updateTaskDate(const Date& d, const Date& newD)
 		if (monthSrc == month && daySrc == day && yearSrc == year)
 		{
 			taskList[i].updateDate(newD);
+			isTaskAvail = true;
+
 		}
 		i++;
 	}
-	if (i == noOfTasks)
+	if (!isTaskAvail)
 		cout << "No Date matches the Search!!";
 }
 void Schedular::updateTaskMsg(const String& m, const String& newM)
 {
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		if (taskList[i].getMsg() == m)
+		{
 			taskList[i].updateMessage(newM);
+			isTaskAvail = true;
+
+		}
 		i++;
 	}
-	if (i == noOfTasks)
+	if (!isTaskAvail)
 		cout << " No Task Matches the Search!!";
 }
 void Schedular::updateTaskStatus(const String& m, const String& s)
 {
 
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		if (taskList[i].getMsg() == m)
+		{
 			taskList[i].updateStatus(s);
+			isTaskAvail = true;
+
+		}
 		i++;
 	}
-	if (i == noOfTasks)
+	if (!isTaskAvail)
 		cout << " No Task Matches the Search!!";
 }
 void Schedular::displayTask(const Date& d)const
@@ -117,6 +136,8 @@ void Schedular::displayTask(const Date& d)const
 	int year = d.getYear();
 	int day = d.getDay();
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		int monthSrc = taskList[i].getDate().getMonth();
@@ -131,10 +152,12 @@ void Schedular::displayTask(const Date& d)const
 			cout << '\n';
 			cout << "Time of task :";
 			taskList[i].getTime().printTwelveHourFormat();
+			isTaskAvail = true;
+
 		}
 		i++;
 	}
-	if (i == noOfTasks)
+	if (!isTaskAvail)
 		cout << "No Task Matches your Search!!";
 }
 int Schedular::DateMatchIndex(const Date& d)const
@@ -143,6 +166,7 @@ int Schedular::DateMatchIndex(const Date& d)const
 	int year = d.getYear();
 	int day = d.getDay();
 	int i = 0;
+
 	while (i < noOfTasks)
 	{
 		int monthSrc = taskList[i].getDate().getMonth();
@@ -160,6 +184,7 @@ void Schedular::DisplayTodaysTask()const
 	int year = systemDate.getYear();
 	int day = systemDate.getDay();
 	int i = 0;
+	bool isTaskAvail = false;
 	while (i < noOfTasks)
 	{
 		int monthSrc = taskList[i].getDate().getMonth();
@@ -171,11 +196,13 @@ void Schedular::DisplayTodaysTask()const
 			cout << '\n' << "Status for today's Task :" << taskList[i].getStatus();
 			cout << "\nTime of Today's task :";
 			taskList[i].getTime().printTwelveHourFormat();
-
+			isTaskAvail = true;
 		}
 		i++;
+
 	}
-	if (i > noOfTasks)
+
+	if (!isTaskAvail)
 		cout << " No Task Scheduled for Today!!";
 
 }
@@ -183,6 +210,8 @@ void Schedular::DisplayTodaysTask()const
 void Schedular::displayTodoTasks()const
 {
 	int i = 0;
+	bool isTaskAvail = false;
+
 	const String m = "Todo";
 	while (i < noOfTasks)
 	{
@@ -193,16 +222,22 @@ void Schedular::displayTodoTasks()const
 			cout << "\n Time : ";
 			taskList[i].getTime().printTwelveHourFormat();
 			cout << "\n Task : " << taskList[i].getMsg();
+			isTaskAvail = true;
+
 		}
 		i++;
+
 	}
 
-	if (i > noOfTasks)
+	if (!isTaskAvail)
 		cout << " No  Todo Task Scheduled !";
+
 }
 void Schedular::displayAllTasks()const
 {
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		cout << "\nTask Scheduled for date : ";
@@ -212,15 +247,18 @@ void Schedular::displayAllTasks()const
 		cout << "\n Task : " << taskList[i].getMsg();
 		cout << "\n Status : " << taskList[i].getStatus();
 		i++;
+		isTaskAvail = true;
 
 	}
 
-	if (i > noOfTasks)
+	if (!isTaskAvail)
 		cout << " No Task  !";
 }
 void Schedular::displayInProgressTasks()const
 {
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		if (taskList[i].getStatus() == "InProgress")
@@ -230,17 +268,21 @@ void Schedular::displayInProgressTasks()const
 			cout << "\n Time : ";
 			taskList[i].getTime().printTwelveHourFormat();
 			cout << "\n Task : " << taskList[i].getMsg();
+			isTaskAvail = true;
+
 		}
 		i++;
 
 	}
 
-	if (i > noOfTasks)
+	if (!isTaskAvail)
 		cout << " No  InProgress Task Scheduled !";
 }
 void Schedular::displayDoneTasks()const
 {
 	int i = 0;
+	bool isTaskAvail = false;
+
 	while (i < noOfTasks)
 	{
 		if (taskList[i].getStatus() == "Done")
@@ -250,12 +292,14 @@ void Schedular::displayDoneTasks()const
 			cout << "\n Time : ";
 			taskList[i].getTime().printTwelveHourFormat();
 			cout << "\n Task : " << taskList[i].getMsg();
+			isTaskAvail = true;
+
 		}
 		i++;
 
 	}
 
-	if (i > noOfTasks)
+	if (!isTaskAvail)
 		cout << " No Done Tasks !";
 }
 void Schedular::reSize(int cap)
