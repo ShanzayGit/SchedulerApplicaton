@@ -31,8 +31,13 @@ g++ src/*.cpp app/main.cpp -I include -o scheduler
 
 ## Sample Output
 Today's Tasks:
-1. Complete project report at 10:00 AM
-2. Team meeting at 2:00 PM
+1. Today's scheduled task is : Team meeting
+   Status for today's task : Todo
+   Time of Today's Task : 02:00:00 PM
+
+2. Today's scheduled task is : Team Dinner
+   Status for today's task : Todo
+   Time of Today's Task : 08:00:00 PM
 
 ## Features
 - Task management by date and time.
