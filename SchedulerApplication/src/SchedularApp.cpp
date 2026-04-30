@@ -11,7 +11,7 @@ void SchedularApp::startApp()
 {
 	Schedular s;
 	int choice;
-	cout << "\nEnter your choice:\n1... To Add a Task\n2... To Update Task Time\n3... To Update Task Date\n4... To Update Task Message \n5... To Update Task Status\n6... To Display All Todo Tasks\n7... To Display All InProgress Tasks\n8... To Display All Done Tasks\n9... To Display All Tasks";
+	cout << "Enter your choice:\n1... To Add a Task\n2... To Update Task Time\n3... To Update Task Date\n4... To Update Task Message \n5... To Update Task Status\n6... To Display All Todo Tasks\n7... To Display All InProgress Tasks\n8... To Display All Done Tasks\n9... To Display All Tasks";
 	cout << "\n10.. To Display a Secific Task \n11.. To Displaye Today's Tasks\n0... To Exit\n";
 	cin >> choice;
 	while (choice != 0)
@@ -113,8 +113,9 @@ void SchedularApp::startApp()
 		}
 		else
 			cout << "\nEnter an appropriate choice!!";
-		cout << "\nEnter your choice:\n1... To Add a Task\n2... To Update Task Time\n3... To Update Task Date\n4... To Update Task Message \n5... To Update Task Status\n6... To Display All Todo Tasks\n7... To Display All InProgress Tasks\n8... To Display All Done Tasks\n9... To Display All Tasks";
+		cout << "\n\nEnter your choice:\n1... To Add a Task\n2... To Update Task Time\n3... To Update Task Date\n4... To Update Task Message \n5... To Update Task Status\n6... To Display All Todo Tasks\n7... To Display All InProgress Tasks\n8... To Display All Done Tasks\n9... To Display All Tasks";
 		cout << "\n10.. To Display a Secific Task \n11.. To Displaye Today's Tasks\n0... To Exit\n";
 		cin >> choice;
+		cout << "\n";
 	}
 }

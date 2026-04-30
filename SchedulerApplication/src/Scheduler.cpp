@@ -129,6 +129,8 @@ void Schedular::displayTask(const Date& d)const
 			cout << " \nYour Task Status is :";
 			cout << taskList[i].getStatus();
 			cout << '\n';
+			cout << "Time of task :";
+			taskList[i].getTime().printTwelveHourFormat();
 		}
 		i++;
 	}
@@ -166,11 +168,14 @@ void Schedular::DisplayTodaysTask()const
 		if (monthSrc == month && daySrc == day && yearSrc == year)
 		{
 			cout << "Taday's Scheduled task is :" << taskList[i].getMsg();
-			cout << '\n' << " Status for today's Task :" << taskList[i].getStatus();
+			cout << '\n' << "Status for today's Task :" << taskList[i].getStatus();
+			cout << "\nTime of Today's task :";
+			taskList[i].getTime().printTwelveHourFormat();
+
 		}
 		i++;
 	}
-	if (i >= noOfTasks)
+	if (i > noOfTasks)
 		cout << " No Task Scheduled for Today!!";
 
 }
@@ -191,6 +196,9 @@ void Schedular::displayTodoTasks()const
 		}
 		i++;
 	}
+
+	if (i > noOfTasks)
+		cout << " No  Todo Task Scheduled !";
 }
 void Schedular::displayAllTasks()const
 {
@@ -206,6 +214,9 @@ void Schedular::displayAllTasks()const
 		i++;
 
 	}
+
+	if (i > noOfTasks)
+		cout << " No Task  !";
 }
 void Schedular::displayInProgressTasks()const
 {
@@ -223,6 +234,9 @@ void Schedular::displayInProgressTasks()const
 		i++;
 
 	}
+
+	if (i > noOfTasks)
+		cout << " No  InProgress Task Scheduled !";
 }
 void Schedular::displayDoneTasks()const
 {
@@ -240,6 +254,9 @@ void Schedular::displayDoneTasks()const
 		i++;
 
 	}
+
+	if (i > noOfTasks)
+		cout << " No Done Tasks !";
 }
 void Schedular::reSize(int cap)
 {
